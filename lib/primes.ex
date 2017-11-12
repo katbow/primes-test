@@ -7,6 +7,7 @@ defmodule Primes do
     n
     |> get_nth_prime_list()
     |> remove_multiples(0, 2)
+    |> Enum.take(n)
   end
 
   @doc """
