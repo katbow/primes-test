@@ -6,8 +6,7 @@ defmodule Primes do
   def generate_primes_list(n) do
     n
     |> get_nth_prime_list()
-    |> remove_multiples_of_2(2)
-    |> remove_multiples_of_3(2)
+    |> remove_multiples(0, 2)
   end
 
   @doc """
@@ -28,23 +27,25 @@ defmodule Primes do
   Removes multiples of 2 from list, for use with https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
   """
 
-  def remove_multiples_of_2(numbers_list, multiplier) do
-    if 2 * multiplier <= List.last(numbers_list) do
+  def remove_multiples(numbers_list, 3, multiplier) do
+    prime = 7
+    if prime * multiplier <= List.last(numbers_list) do
       numbers_list
-      |> List.delete(2 * multiplier)
-      |> remove_multiples_of_2(multiplier + 1)
+      |> List.delete(prime * multiplier)
+      |> remove_multiples(3, multiplier + 1)
     else
       numbers_list
     end
   end
 
-  def remove_multiples_of_3(numbers_list, multiplier) do
-    if 3 * multiplier <= List.last(numbers_list) do
+  def remove_multiples(numbers_list, prime_position, multiplier) do
+    prime = Enum.at([2, 3, 5, 7], prime_position)
+    if prime * multiplier <= List.last(numbers_list) do
       numbers_list
-      |> List.delete(3 * multiplier)
-      |> remove_multiples_of_3(multiplier + 1)
+      |> List.delete(prime * multiplier)
+      |> remove_multiples(prime_position, multiplier + 1)
     else
-      numbers_list
+      remove_multiples(numbers_list, prime_position + 1, 2)
     end
   end
 end
