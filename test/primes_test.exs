@@ -40,4 +40,10 @@ defmodule PrimesTest do
     assert Kernel.length(actual) == 1000
     assert List.last(actual) == 7919
   end
+
+  test "make_row creates first row in correct format" do
+    actual = Primes.make_row([2, 3, 5, 7], 1, 4)
+    expected = "|  |2 |3 |5 |7 |"
+    assert actual == expected
+  end
 end
