@@ -52,4 +52,8 @@ defmodule Primes do
       remove_multiples(numbers_list, prime_position + 1, 2)
     end
   end
+
+  def make_row(primes_list, 1, _n) do
+    "|  |" <> Enum.join(primes_list, " |") <> " |"
+  end
 end
