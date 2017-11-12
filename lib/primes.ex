@@ -3,6 +3,9 @@ defmodule Primes do
   Documentation for Primes.
   """
 
+  @prime_multipliers [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47,
+  53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
+
   def generate_primes_list(n) do
     n
     |> get_nth_prime_list()
@@ -28,19 +31,19 @@ defmodule Primes do
   Removes multiples of prime numbers from list, for use with https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
   """
 
-  def remove_multiples(numbers_list, 3, multiplier) do
-    prime = 7
+  def remove_multiples(numbers_list, 24, multiplier) do
+    prime = 97
     if prime * multiplier <= List.last(numbers_list) do
       numbers_list
       |> List.delete(prime * multiplier)
-      |> remove_multiples(3, multiplier + 1)
+      |> remove_multiples(24, multiplier + 1)
     else
       numbers_list
     end
   end
 
   def remove_multiples(numbers_list, prime_position, multiplier) do
-    prime = Enum.at([2, 3, 5, 7], prime_position)
+    prime = Enum.at(@prime_multipliers, prime_position)
     if prime * multiplier <= List.last(numbers_list) do
       numbers_list
       |> List.delete(prime * multiplier)
