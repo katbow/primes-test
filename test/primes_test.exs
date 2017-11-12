@@ -10,7 +10,7 @@ defmodule PrimesTest do
     actual = Primes.get_nth_prime_list(168)
     expected_length = 1241
     nth_prime = 997
-    assert List.count(actual) == expected_length
+    assert Kernel.length(actual) == expected_length
     assert List.last(actual) >= nth_prime
   end
 end
