@@ -12,7 +12,6 @@ defmodule Primes do
       |> generate_primes_list()
       |> make_rows(n, [])
     table = Enum.join(rows)
-    IO.puts table
   end
 
   def generate_primes_list(n) do
