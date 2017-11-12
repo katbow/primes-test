@@ -43,7 +43,13 @@ defmodule PrimesTest do
 
   test "make_row creates first row in correct format" do
     actual = Primes.make_row([2, 3, 5, 7], 1, 4)
-    expected = "|  |2 |3 |5 |7 |"
+    expected = "|  |2 |3 |5 |7 |\n"
+    assert actual == expected
+  end
+
+  test "make_row creates row containing prime number + multiples up to last in list" do
+    actual = Primes.make_row([2, 3, 5, 7], 2, 4)
+    expected = "|2 |6 |10 |14 |\n"
     assert actual == expected
   end
 end
