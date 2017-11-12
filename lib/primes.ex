@@ -7,6 +7,7 @@ defmodule Primes do
     n
     |> get_nth_prime_list()
     |> remove_multiples_of_2(2)
+    |> remove_multiples_of_3(2)
   end
 
   @doc """
@@ -32,6 +33,16 @@ defmodule Primes do
       numbers_list
       |> List.delete(2 * multiplier)
       |> remove_multiples_of_2(multiplier + 1)
+    else
+      numbers_list
+    end
+  end
+
+  def remove_multiples_of_3(numbers_list, multiplier) do
+    if 3 * multiplier <= List.last(numbers_list) do
+      numbers_list
+      |> List.delete(3 * multiplier)
+      |> remove_multiples_of_3(multiplier + 1)
     else
       numbers_list
     end
