@@ -25,4 +25,19 @@ defmodule PrimesTest do
     expected = [2, 3, 5, 7, 11, 13, 17, 19]
     assert actual == expected
   end
+
+  test "generate_primes_list gives list of n prime numbers for small n" do
+    actual = Primes.generate_primes_list(10)
+    assert Kernel.length(actual) == 10
+    assert List.last(actual) == 29
+  end
+
+  test "generate_primes_list gives list of n prime numbers for med n" do
+    actual = Primes.generate_primes_list(168)
+    assert Kernel.length(actual) == 168
+    assert List.last(actual) == 997
+    actual = Primes.generate_primes_list(1000)
+    assert Kernel.length(actual) == 1000
+    assert List.last(actual) == 7919
+  end
 end
