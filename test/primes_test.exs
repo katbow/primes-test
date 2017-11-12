@@ -13,4 +13,9 @@ defmodule PrimesTest do
     assert Kernel.length(actual) == expected_length
     assert List.last(actual) >= nth_prime
   end
+
+  test "get_nth_prime_list includes nth prime for numbers" do
+    assert Primes.get_nth_prime_list(1) == [2, 3]
+    assert Primes.get_nth_prime_list(2) == [2, 3]
+  end
 end
