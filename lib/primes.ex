@@ -6,6 +6,15 @@ defmodule Primes do
   @prime_multipliers [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47,
   53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
 
+  def make_primes_mult_table(n) do
+    rows =
+      n
+      |> generate_primes_list()
+      |> make_rows(n, [])
+    table = Enum.join(rows)
+    IO.puts table
+  end
+
   def generate_primes_list(n) do
     n
     |> get_nth_prime_list()
