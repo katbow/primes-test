@@ -12,6 +12,9 @@ defmodule Primes do
   Creates a list of primes from 2,
   which increments up to or greater than nth prime.
   """
+  def get_nth_prime_list(n) when n < 3 do
+    [2, 3]
+  end
 
   def get_nth_prime_list(n) do
     last_number = n * :math.log2(n) |> Float.ceil() |> trunc()
