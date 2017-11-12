@@ -24,7 +24,7 @@ defmodule Primes do
   end
 
   @doc """
-  Removes multiples of 2 from list, for use with https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
+  Removes multiples of prime numbers from list, for use with https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
   """
 
   def remove_multiples(numbers_list, 3, multiplier) do
