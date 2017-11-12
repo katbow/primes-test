@@ -18,4 +18,9 @@ defmodule PrimesTest do
     assert Primes.get_nth_prime_list(1) == [2, 3]
     assert Primes.get_nth_prime_list(2) == [2, 3]
   end
+
+  test "remove_multiples_of_2 removes all even numbers except 2" do
+    assert Primes.remove_multiples_of_2([2, 3, 4, 5], 2) == [2, 3, 5]
+    assert Primes.remove_multiples_of_2([2, 3, 4, 5, 6, 7, 8], 2) == [2, 3, 5, 7]
+  end
 end
