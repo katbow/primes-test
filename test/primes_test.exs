@@ -41,6 +41,12 @@ defmodule PrimesTest do
     assert List.last(actual2) == 7919
   end
 
+  test "generate_primes_list gives list of n prime numbers for large n" do
+    actual = Primes.generate_primes_list(4000)
+    assert Kernel.length(actual) == 4000
+    assert List.last(actual) == 37813
+  end
+
   test "make_rows creates first row in correct format" do
     actual = Primes.make_rows([2, 3, 5, 7], 4, [])
     expected = "|  |2 |3 |5 |7 |\n"
