@@ -53,12 +53,13 @@ defmodule Primes do
     end
   end
 
-  def make_rows(primes_list, 1, _n) do
-    "|  |" <> Enum.join(primes_list, " |") <> " |\n"
+  def make_rows(primes_list, 0, acc) do
+    ["|  |#{Enum.join(primes_list, " |")} |\n" | acc]
   end
 
-  def make_rows(primes_list, row_count, _n) do
-    prime = Enum.at(primes_list, row_count - 2)
-    "|#{prime} |#{Enum.map_join(primes_list, " |", &(&1 * prime))} |\n"
+  def make_rows(primes_list, row_count, acc) do
+    prime = Enum.at(primes_list, row_count - 1)
+    rows = ["|#{prime} |#{Enum.map_join(primes_list, " |", &(&1 * prime))} |\n" | acc]
+    make_rows(primes_list, row_count - 1, rows)
   end
 end
