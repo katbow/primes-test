@@ -14,7 +14,7 @@ defmodule PrimesTest do
     assert List.last(actual) >= nth_prime
   end
 
-  test "get_nth_prime_list includes nth prime for numbers" do
+  test "get_nth_prime_list includes nth prime for n < 3" do
     assert Primes.get_nth_prime_list(1) == [2, 3]
     assert Primes.get_nth_prime_list(2) == [2, 3]
   end
@@ -41,15 +41,15 @@ defmodule PrimesTest do
     assert List.last(actual) == 7919
   end
 
-  test "make_row creates first row in correct format" do
-    actual = Primes.make_row([2, 3, 5, 7], 1, 4)
+  test "make_rows creates first row in correct format" do
+    actual = Primes.make_rows([2, 3, 5, 7], 1, 4)
     expected = "|  |2 |3 |5 |7 |\n"
     assert actual == expected
   end
 
-  test "make_row creates row containing prime number + multiples up to last in list" do
-    actual = Primes.make_row([2, 3, 5, 7], 2, 4)
-    expected = "|2 |6 |10 |14 |\n"
+  test "make_rows creates row containing prime number + multiples up to last in list" do
+    actual = Primes.make_rows([2, 3, 5, 7], 2, 4)
+    expected = "|2 |4 |6 |10 |14 |\n"
     assert actual == expected
   end
 end
