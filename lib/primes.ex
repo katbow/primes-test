@@ -3,15 +3,12 @@ defmodule Primes do
   Documentation for Primes.
   """
 
-  @prime_multipliers [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47,
-  53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
-
   def make_primes_mult_table(n) do
     rows =
       n
       |> generate_primes_list()
       |> make_rows(n, [])
-    table = Enum.join(rows)
+    Enum.join(rows)
   end
 
   def generate_primes_list(n) do
@@ -39,25 +36,17 @@ defmodule Primes do
   Removes multiples of prime numbers from list, for use with https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
   """
 
-  def remove_multiples(numbers_list, 24, multiplier) do
-    prime = 97
-    if prime * multiplier <= List.last(numbers_list) do
-      numbers_list
-      |> List.delete(prime * multiplier)
-      |> remove_multiples(24, multiplier + 1)
-    else
-      numbers_list
-    end
-  end
-
   def remove_multiples(numbers_list, prime_position, multiplier) do
-    prime = Enum.at(@prime_multipliers, prime_position)
-    if prime * multiplier <= List.last(numbers_list) do
-      numbers_list
-      |> List.delete(prime * multiplier)
-      |> remove_multiples(prime_position, multiplier + 1)
-    else
-      remove_multiples(numbers_list, prime_position + 1, 2)
+    prime = Enum.at(numbers_list, prime_position)
+    cond do
+      prime == nil ->
+        numbers_list
+      prime * multiplier <= List.last(numbers_list) ->
+        numbers_list
+        |> List.delete(prime * multiplier)
+        |> remove_multiples(prime_position, multiplier + 1)
+      true ->
+        remove_multiples(numbers_list, prime_position + 1, 2)
     end
   end
 
