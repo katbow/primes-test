@@ -20,8 +20,8 @@ defmodule PrimesTest do
   end
 
   test "remove_multiples removes multiples of first 4 primes" do
-    assert Primes.remove_multiples([2, 3, 4, 5, 6, 7, 8], 0, 2) == [2, 3, 5, 7]
-    actual = Primes.remove_multiples(Enum.to_list(2..21), 0, 2)
+    assert Primes.remove_multiples([2, 3, 4, 5, 6, 7, 8], 0, 2, 2) == [2, 3, 5, 7]
+    actual = Primes.remove_multiples(Enum.to_list(2..21), 0, 2, 3)
     expected = [2, 3, 5, 7, 11, 13, 17, 19]
     assert actual == expected
   end
