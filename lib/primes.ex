@@ -12,9 +12,10 @@ defmodule Primes do
   end
 
   def generate_primes_list(n) do
+    sqrt_n = n |> :math.sqrt() |> Float.ceil() |> trunc()
     n
     |> get_nth_prime_list()
-    |> remove_multiples(0, 2)
+    |> remove_multiples(0, 2, sqrt_n)
     |> Enum.take(n)
   end
 
@@ -36,17 +37,20 @@ defmodule Primes do
   Removes multiples of prime numbers from list, for use with https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
   """
 
-  def remove_multiples(numbers_list, prime_position, multiplier) do
+  def remove_multiples(numbers_list, prime_position, _multiplier, sqrt_n) when prime_position > sqrt_n do
+    numbers_list
+  end
+
+  def remove_multiples(numbers_list, prime_position, multiplier, sqrt_n) do
     prime = Enum.at(numbers_list, prime_position)
     cond do
-      prime == nil ->
-        numbers_list
       prime * multiplier <= List.last(numbers_list) ->
         numbers_list
         |> List.delete(prime * multiplier)
-        |> remove_multiples(prime_position, multiplier + 1)
+        |> remove_multiples(prime_position, multiplier + 1, sqrt_n)
       true ->
-        remove_multiples(numbers_list, prime_position + 1, 2)
+        prime_pos = prime_position + 1
+        remove_multiples(numbers_list, prime_pos, Enum.at(numbers_list, prime_pos), sqrt_n)
     end
   end
 
