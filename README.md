@@ -1,19 +1,15 @@
 # Primes
 
-**TODO: Add description**
+## How to run
 
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `primes` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [{:primes, "~> 0.1.0"}]
-end
+```
+git clone
+cd primes
+iex -S mix
+Primes.make_primes_mult_table(n)
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/primes](https://hexdocs.pm/primes).
+## What I'm pleased with
+
+## What I would do if I had more time
 
