@@ -1,6 +1,8 @@
 defmodule PrimesTest do
   use ExUnit.Case
 
+  import ExUnit.CaptureIO
+
   test "get_nth_prime_list creates list incrementing by 1" do
     assert Primes.get_nth_prime_list(4) == [2, 3, 4, 5, 6, 7, 8]
     assert Primes.get_nth_prime_list(3) == [2, 3, 4, 5]
@@ -67,8 +69,8 @@ defmodule PrimesTest do
   end
 
   test "make_primes_mult_table generates string with all rows" do
-    actual = Primes.make_primes_mult_table(4)
-    expected = "|  |2 |3 |5 |7 |\n|2 |4 |6 |10 |14 |\n|3 |6 |9 |15 |21 |\n|5 |10 |15 |25 |35 |\n|7 |14 |21 |35 |49 |\n"
-    assert actual == expected
+    actual = fn -> Primes.make_primes_mult_table(4) end
+    expected = "|  |2 |3 |5 |7 |\n|2 |4 |6 |10 |14 |\n|3 |6 |9 |15 |21 |\n|5 |10 |15 |25 |35 |\n|7 |14 |21 |35 |49 |\n\n"
+    assert capture_io(actual) == expected
   end
 end
