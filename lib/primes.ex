@@ -8,7 +8,7 @@ defmodule Primes do
       n
       |> generate_primes_list()
       |> make_rows(n, [])
-    Enum.join(rows)
+    IO.puts Enum.join(rows)
   end
 
   def generate_primes_list(n) do
