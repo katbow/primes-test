@@ -3,6 +3,10 @@ defmodule Primes do
   Documentation for Primes.
   """
 
+  @doc """
+  Creates a list which is of length n, with the last number as the nth prime
+  """
+
   def generate_primes_list(n) do
     sqrt_n = calculcate_sqrt(n)
     n
@@ -36,6 +40,8 @@ defmodule Primes do
   def get_nth_prime_list(n) do
     Enum.to_list(2..n)
   end
+
+  @doc """
   Removes multiples of prime numbers from list, for use with https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
   """
 
