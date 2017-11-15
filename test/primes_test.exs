@@ -15,7 +15,7 @@ defmodule PrimesTest do
   end
 
   test "get_nth_prime_list includes nth prime for n < 3" do
-    assert Primes.get_nth_prime_list(1) == [2, 3]
+    assert Primes.get_nth_prime_list(1) == [2]
     assert Primes.get_nth_prime_list(2) == [2, 3]
   end
 
