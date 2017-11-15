@@ -4,11 +4,15 @@ defmodule Primes do
   """
 
   def generate_primes_list(n) do
-    sqrt_n = n |> :math.sqrt() |> Float.ceil() |> trunc()
+    sqrt_n = calculcate_sqrt(n)
     n
     |> get_nth_prime_list()
     |> remove_multiples(0, 2, sqrt_n)
     |> Enum.take(n)
+  end
+
+  defp calculcate_sqrt(n) do
+    n |> :math.sqrt() |> Float.ceil() |> trunc()
   end
 
   @doc """
