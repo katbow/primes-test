@@ -16,6 +16,8 @@ iex -S mix
 Primes.make_primes_mult_table(n)
 ```
 
+Tests can be run with `mix test` when in the `primes-test` directory.
+
 ## What I'm pleased with
 
 ## What I would do if I had more time
