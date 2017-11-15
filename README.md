@@ -27,3 +27,8 @@ use for better understanding.
 
 ## What I would do if I had more time
 
+* Improve on the speed of the algorithm.
+  * I was going about the `remove_multiples/4` function the wrong way because
+  it is iterating over numbers that are already crossed off by previous prime
+  numbers, and because I (attempt to) delete an item from the list on each step,
+  which is an expensive operation.
