@@ -20,15 +20,18 @@ defmodule Primes do
   which increments up to or greater than nth prime.
   """
 
-  def get_nth_prime_list(n) when n < 3 do
-    [2, 3]
-  end
-
   def get_nth_prime_list(n) do
     last_number = get_last_value(n)
     Enum.to_list(2..last_number)
   end
 
+  defp get_last_value(1) do
+    2
+  end
+
+  defp get_last_value(2) do
+    3
+  end
 
   defp get_last_value(n) do
     n * :math.log2(n) |> Float.ceil() |> trunc()
