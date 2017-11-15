@@ -7,6 +7,8 @@ Allows you to input a number, `n`, and prints out a multiplication table with
 
 Ensure you have [Elixir installed](http://elixir-lang.github.io/install.html).
 
+Run the following commands, where `n` is a positive integer.
+
 ```
 git clone https://github.com/katbow/primes-test.git
 cd primes-test
