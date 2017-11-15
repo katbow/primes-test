@@ -6,6 +6,7 @@ defmodule Primes do
   def generate_primes_list(n) do
     sqrt_n = calculcate_sqrt(n)
     n
+    |> get_last_value()
     |> get_nth_prime_list()
     |> remove_multiples(0, 2, sqrt_n)
     |> Enum.take(n)
@@ -13,16 +14,6 @@ defmodule Primes do
 
   defp calculcate_sqrt(n) do
     n |> :math.sqrt() |> Float.ceil() |> trunc()
-  end
-
-  @doc """
-  Creates a list of primes from 2,
-  which increments up to or greater than nth prime.
-  """
-
-  def get_nth_prime_list(n) do
-    last_number = get_last_value(n)
-    Enum.to_list(2..last_number)
   end
 
   defp get_last_value(1) do
@@ -38,6 +29,13 @@ defmodule Primes do
   end
 
   @doc """
+  Creates a list of primes from 2,
+  which increments up to or greater than nth prime.
+  """
+
+  def get_nth_prime_list(n) do
+    Enum.to_list(2..n)
+  end
   Removes multiples of prime numbers from list, for use with https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
   """
 
