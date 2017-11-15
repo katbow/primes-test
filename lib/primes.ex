@@ -25,8 +25,13 @@ defmodule Primes do
   end
 
   def get_nth_prime_list(n) do
-    last_number = n * :math.log2(n) |> Float.ceil() |> trunc()
+    last_number = get_last_value(n)
     Enum.to_list(2..last_number)
+  end
+
+
+  defp get_last_value(n) do
+    n * :math.log2(n) |> Float.ceil() |> trunc()
   end
 
   @doc """
