@@ -8,7 +8,7 @@ defmodule Primes do
   """
 
   def generate_primes_list(n) do
-    sqrt_n = calculcate_sqrt(n)
+    sqrt_n = calculate_sqrt(n)
     n
     |> get_last_value()
     |> get_nth_prime_list()
@@ -16,7 +16,7 @@ defmodule Primes do
     |> Enum.take(n)
   end
 
-  defp calculcate_sqrt(n) do
+  defp calculate_sqrt(n) do
     n |> :math.sqrt() |> Float.ceil() |> trunc()
   end
 
