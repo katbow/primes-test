@@ -20,5 +20,10 @@ Tests can be run with `mix test` when in the `primes-test` directory.
 
 ## What I'm pleased with
 
+I was pleased with the process I took while completing the problem. If I was
+unsure of where to go next, I would take time to either branch off & "hack"
+then delete the branch, or I would re-examine the Sieve I was attempting to
+use for better understanding.
+
 ## What I would do if I had more time
 
