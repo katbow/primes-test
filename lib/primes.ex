@@ -3,14 +3,6 @@ defmodule Primes do
   Documentation for Primes.
   """
 
-  def make_primes_mult_table(n) do
-    rows =
-      n
-      |> generate_primes_list()
-      |> make_rows(n, [])
-    IO.puts Enum.join(rows)
-  end
-
   def generate_primes_list(n) do
     sqrt_n = n |> :math.sqrt() |> Float.ceil() |> trunc()
     n
@@ -52,15 +44,5 @@ defmodule Primes do
         prime_pos = prime_position + 1
         remove_multiples(numbers_list, prime_pos, Enum.at(numbers_list, prime_pos), sqrt_n)
     end
-  end
-
-  def make_rows(primes_list, 0, acc) do
-    ["|  |#{Enum.join(primes_list, " |")} |\n" | acc]
-  end
-
-  def make_rows(primes_list, row_count, acc) do
-    prime = Enum.at(primes_list, row_count - 1)
-    rows = ["|#{prime} |#{Enum.map_join(primes_list, " |", &(&1 * prime))} |\n" | acc]
-    make_rows(primes_list, row_count - 1, rows)
   end
 end
