@@ -34,4 +34,7 @@ defmodule Table do
     rows = ["|#{prime} |#{Enum.map_join(primes_list, " |", &row_fn.(&1, prime))} |\n" | acc]
     make_rows(primes_list, row_count - 1, rows, row_fn)
   end
+
+  defp row_mult(x, y), do: x * y
+  defp row_sum(x, y), do: x + y
 end
