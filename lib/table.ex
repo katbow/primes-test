@@ -4,13 +4,20 @@ defmodule Table do
   end
 
   # can use 2 opts, one for table data, and one for table_operation to determine in helper
-  defp helper(n, table_data) do
-    case table_data do
+  defp helper(n, table_data, operation) do
+    list_creator = case table_data do
       "primes" ->
-        make_primes_mult_table(n, &Primes.generate_primes_list/1, &row_mult/2)
+        &Primes.generate_primes_list/1
       _ ->
-        make_primes_mult_table(n, &make_list/1, &row_sum/2)
+        &make_list/1
     end
+    cell_calculation = case operation do
+      "multiply" ->
+        &row_mult/2
+      _ ->
+        &row_sum/2
+    end
+    make_primes_mult_table(n, list_creator, cell_calculation)
   end
 
   defp make_list(n) do
