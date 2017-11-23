@@ -13,6 +13,10 @@ defmodule Table do
     end
   end
 
+  defp make_list(n) do
+    Enum.to_list(1..n)
+  end
+
   def make_primes_mult_table(n, data_fn, row_fn) do
     rows =
       n
