@@ -12,10 +12,12 @@ defmodule Table do
         make_primes_mult_table(n, &make_list/1, &row_sum/2)
     end
   end
+
+  def make_primes_mult_table(n, data_fn, row_fn) do
     rows =
       n
-      |> Primes.generate_primes_list()
-      |> make_rows(n, [])
+      |> data_fn.()
+      |> make_rows(n, [], row_fn)
     IO.puts Enum.join(rows)
   end
 
