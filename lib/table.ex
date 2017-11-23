@@ -1,6 +1,6 @@
 defmodule Table do
-  def entry_point(n, opts \\ [table_data: "primes"]) do
-    helper(n, opts[:table_data])
+  def entry_point(n, opts \\ [table_data: "primes", operation: "multiply"]) do
+    helper(n, opts[:table_data], opts[:operation])
   end
 
   # can use 2 opts, one for table data, and one for table_operation to determine in helper
