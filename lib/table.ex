@@ -1,5 +1,7 @@
 defmodule Table do
-  def make_primes_mult_table(n) do
+  def entry_point(n, opts \\ [table_data: "primes"]) do
+    helper(n, opts[:table_data])
+  end
     rows =
       n
       |> Primes.generate_primes_list()
