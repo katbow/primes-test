@@ -1,4 +1,6 @@
 defmodule Table do
+  alias Table.Prime
+  alias Table.Operation
   def entry_point(n, opts \\ [table_data: "primes", operation: "multiply"]) do
     helper(n, opts[:table_data], opts[:operation])
   end
@@ -7,15 +9,15 @@ defmodule Table do
   defp helper(n, table_data, operation) do
     list_creator = case table_data do
       "primes" ->
-        &Primes.generate_primes_list/1
+        &Prime.generate_primes_list/1
       _ ->
         &make_list/1
     end
     cell_calculation = case operation do
       "multiply" ->
-        &row_mult/2
+        &Operation.mult/2
       _ ->
-        &row_sum/2
+        &Operation.sum/2
     end
     make_primes_mult_table(n, list_creator, cell_calculation)
   end
@@ -41,7 +43,4 @@ defmodule Table do
     rows = ["|#{prime} |#{Enum.map_join(primes_list, " |", &row_fn.(&1, prime))} |\n" | acc]
     make_rows(primes_list, row_count - 1, rows, row_fn)
   end
-
-  defp row_mult(x, y), do: x * y
-  defp row_sum(x, y), do: x + y
 end

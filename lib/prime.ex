@@ -1,4 +1,4 @@
-defmodule Primes do
+defmodule Table.Prime do
   @moduledoc """
   Documentation for Primes.
   """
