@@ -1,15 +1,19 @@
-defmodule Primes.Mixfile do
+defmodule Table.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :primes,
+    [app: :table,
      version: "0.1.0",
      elixir: "~> 1.4",
+     escript: escript(),
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      deps: deps()]
   end
 
+  def escript do
+    [main_module: Table.CLI]
+  end
   # Configuration for the OTP application
   #
   # Type "mix help compile.app" for more information
