@@ -45,11 +45,11 @@ defmodule Table.Prime do
   Removes multiples of prime numbers from list, for use with https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
   """
 
-  def remove_multiples(numbers_list, prime_position, _multiplier, sqrt_n) when prime_position >= sqrt_n do
+  defp remove_multiples(numbers_list, prime_position, _multiplier, sqrt_n) when prime_position >= sqrt_n do
     numbers_list
   end
 
-  def remove_multiples(numbers_list, prime_position, multiplier, sqrt_n) do
+  defp remove_multiples(numbers_list, prime_position, multiplier, sqrt_n) do
     prime = Enum.at(numbers_list, prime_position)
     cond do
       prime * multiplier <= List.last(numbers_list) ->
