@@ -1,15 +1,17 @@
 defmodule Table.CLI do
-  def main(n, args \\ [table: "primes", operation: "multiply"]) do
+  alias Table.{Prime, Operation}
+  def main(args \\ []) do
     args
     |> parse_args()
-    |> response(n)
+    |> response()
+    |> IO.inspect()
   end
 
   defp parse_args(args) do
-    {opts, type, _} =
+    {opts, [n|_], _} =
       args
       |> OptionParser.parse(switches: [table: :string, operation: :string])
-    {opts, List.to_string(type)}
+    {opts, String.to_integer(n)}
   end
 
   defp response(n, {opts, type}) do
