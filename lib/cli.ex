@@ -14,6 +14,17 @@ defmodule Table.CLI do
     {opts, String.to_integer(n)}
   end
 
-  defp response(n, {opts, type}) do
+  defp response({opts, n}) do
+    table = case opts[:table] do
+      "primes" -> &Prime.generate_primes_list/1
+      "increment" -> &Table.make_list/1
+      _ -> &Prime.generate_primes_list/1
+    end
+    operation = case opts[:operation] do
+      "multiply" -> &Operation.mult/2
+      "sum" -> &Operation.sum/2
+      _ -> &Operation.mult/2
+    end
+    Table.make_table(n, table, operation)
   end
 end
