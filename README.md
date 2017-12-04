@@ -13,7 +13,7 @@ Run the following commands, where `n` is a positive integer.
 git clone https://github.com/katbow/primes-test.git
 cd primes-test
 iex -S mix
-Primes.make_primes_mult_table(n)
+Primes.make_table(n)
 ```
 
 Tests can be run with `mix test` when in the `primes-test` directory.

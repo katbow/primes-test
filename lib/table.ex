@@ -1,14 +1,13 @@
 defmodule Table do
-  defp make_list(n) do
+  def make_list(n) do
     Enum.to_list(1..n)
   end
 
-  def make_primes_mult_table(n, data_fn, row_fn) do
-    rows =
-      n
-      |> data_fn.()
-      |> make_rows(n, [], row_fn)
-    IO.puts Enum.join(rows)
+  def make_table(n, data_fn, row_fn) do
+    n
+    |> data_fn.()
+    |> make_rows(n, [], row_fn)
+    |> Enum.join()
   end
 
   def make_rows(primes_list, 0, acc, _row_fn) do
