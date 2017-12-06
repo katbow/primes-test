@@ -17,7 +17,7 @@ defmodule Table.CLI do
     {opts, string_to_num(n)}
   end
 
-  defp response({opts, n}) do
+  defp response({opts, n}) when n !== :error and n > 1 do
     table = table_type_decider(opts[:table])
     operation = operation_decider(opts[:operation])
 
