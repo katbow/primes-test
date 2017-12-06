@@ -2,10 +2,11 @@ defmodule Table.CLI do
   alias Table.{Prime, Operation, Increment}
   def main([]), do: IO.puts("Please provide an integer")
 
+  def main(args) do
     args
     |> parse_args()
     |> response()
-    |> IO.inspect()
+    |> IO.puts()
   end
 
   defp parse_args(args) do
