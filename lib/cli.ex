@@ -26,6 +26,14 @@ defmodule Table.CLI do
   defp response({_opts, n}) when n == :error, do: "Must be an integer"
   defp response({_opts, n}) when n < 1, do: "Must be a positive number"
 
+  defp string_to_num(string) do
+    try do
+      String.to_integer(string)
+    rescue
+      ArgumentError -> :error
+    end
+  end
+
   defp table_type_decider(table) do
     case table do
       "primes" -> &Prime.generate_primes_list/1
