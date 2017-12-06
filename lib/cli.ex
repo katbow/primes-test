@@ -23,6 +23,8 @@ defmodule Table.CLI do
 
     Table.make_table(n, table, operation)
   end
+  defp response({_opts, n}) when n == :error, do: "Must be an integer"
+  defp response({_opts, n}) when n < 1, do: "Must be a positive number"
 
   defp table_type_decider(table) do
     case table do
