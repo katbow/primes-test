@@ -1,5 +1,5 @@
 defmodule Table.CLI do
-  alias Table.{Prime, Operation}
+  alias Table.{Prime, Operation, Increment}
   def main(args \\ []) do
     args
     |> parse_args()
@@ -15,16 +15,27 @@ defmodule Table.CLI do
   end
 
   defp response({opts, n}) do
-    table = case opts[:table] do
+    table = table_type_decider(opts[:table])
+    operation = operation_decider(opts[:operation])
+
+    Table.make_table(n, table, operation)
+  end
+
+  defp table_type_decider(table) do
+    case table do
       "primes" -> &Prime.generate_primes_list/1
-      "increment" -> &Table.make_list/1
+      "increment" -> &Increment.make_list/1
       _ -> &Prime.generate_primes_list/1
     end
-    operation = case opts[:operation] do
-      "multiply" -> &Operation.mult/2
+  end
+
+  defp operation_decider(operation) do
+    case operation do
+      "multiply" -> &Operation.multiply/2
       "sum" -> &Operation.sum/2
-      _ -> &Operation.mult/2
+      "subtract" -> &Operation.subtract/2
+      "divide" -> &Operation.divide/2
+      _ -> &Operation.multiply/2
     end
-    Table.make_table(n, table, operation)
   end
 end
