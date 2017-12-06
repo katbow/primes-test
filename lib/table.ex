@@ -1,8 +1,4 @@
 defmodule Table do
-  def make_list(n) do
-    Enum.to_list(1..n)
-  end
-
   def make_table(n, data_fn, row_fn) do
     n
     |> data_fn.()
