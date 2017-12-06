@@ -11,7 +11,7 @@ defmodule Table.Prime do
     sqrt_n = calculate_sqrt(n)
     n
     |> get_last_value()
-    |> get_nth_prime_list()
+    |> make_list()
     |> remove_multiples(0, 2, sqrt_n)
     |> Enum.take(n)
   end
@@ -37,13 +37,9 @@ defmodule Table.Prime do
   which increments up to or greater than nth prime.
   """
 
-  def get_nth_prime_list(n) do
+  def make_list(n) do
     Enum.to_list(2..n)
   end
-
-  @doc """
-  Removes multiples of prime numbers from list, for use with https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
-  """
 
   defp remove_multiples(numbers_list, prime_position, _multiplier, sqrt_n) when prime_position >= sqrt_n do
     numbers_list
