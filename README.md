@@ -12,9 +12,18 @@ Run the following commands, where `n` is a positive integer.
 ```
 git clone https://github.com/katbow/primes-test.git
 cd primes-test
-iex -S mix
-Primes.make_table(n)
+mix escript.build
+./table n [--table table_type] [--operation operation_type]
 ```
+
+The option for `--table` can be `primes` or `increment`. If no option is given or
+a different value is given for this, it defaults to `primes`.
+
+The option for `--operation` can be `multiply`, `sum`, `subtract`, `divide`. If
+no option is given or a value different from those listed is given, the default
+is `multiply`.
+
+## Testing
 
 Tests can be run with `mix test` when in the `primes-test` directory.
 
