@@ -12,8 +12,9 @@ defmodule Table.CLI do
   defp parse_args(args) do
     {opts, [n|_], _} =
       args
-      |> OptionParser.parse(switches: [table: :string, operation: :string])
-    {opts, String.to_integer(n)}
+      |> OptionParser.parse(switches: [table: :string, operation: :string],
+        aliases: [t: :table, o: :operation])
+    {opts, string_to_num(n)}
   end
 
   defp response({opts, n}) do
